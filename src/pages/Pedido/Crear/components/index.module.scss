@@ -1,0 +1,48 @@
+.container {
+  width: 100%;
+  height: 70vh;
+  margin: 0 auto;
+  padding: 5% 0;
+  color: var(--gray-700);
+  background-color: rgb(255 255 255 / 1);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--bs-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .icon {
+    cursor: pointer;
+  }
+
+  @media (min-width: 769px) {
+    width: 100%;
+  }
+}
+
+.container > h1 {
+  font-family: Ubuntu, Roboto, sans-serif;
+    font-size: var(--m-title-2);
+    color: #d71920; // o gris #757575 si es semaforo
+    font-weight: 500;
+}
+  
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: var(--spacing-4);
+}
+
+.actions {
+  width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: 769px) {
+    width: 60%;
+  }
+}
+
+
+
+  

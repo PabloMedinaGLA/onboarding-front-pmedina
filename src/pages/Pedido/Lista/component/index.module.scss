@@ -1,0 +1,176 @@
+.container {
+  width: 100%;
+  height: 90%;
+  margin: 0 auto;
+  color: var(--gray-700);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--bs-primary);
+  background-color: rgb(255 255 255 / 1)
+  
+}
+  
+  
+  
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--spacing-4);
+}
+
+.containerHead{
+  padding: 20px;
+}
+
+.containerHead > h1 {
+  font-size: 30px;
+  color: #D71920;
+}
+
+
+
+.containerfiltro{
+  align-items: center;
+  width: 100%;
+}
+
+.containerfiltro > h2 {
+  font-size: 20px;
+  color: #D71920;
+}
+
+.containerfiltro > button {
+  padding: 0;
+  border: none;
+  background-color:transparent;
+}
+
+.containerboxAllCards{
+  display: flex;
+  gap: 30px;
+  margin:0 50px;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 60vh;
+}
+
+.containerboxAllCards::-webkit-scrollbar {
+  width: 10px;
+}
+
+.containerboxAllCards::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+.containerboxAllCards::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #7e7d7d;
+}
+
+.containerCard{
+  width: 270px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--bs-primary);
+}
+
+.cardHeader{
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerSearch{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search{
+  width: 500px;
+}
+
+.containerOrdenarPor{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.containerOrdenarPorFecha,
+.containerOrdenarPorPedido,
+.containerOrdenarPorCC {
+  width: max-content;
+}
+
+
+.containernumeroPedido{
+  display: flex;
+  gap: 5px;
+  font-size: 15px;
+}
+
+.selecEstado{
+  border-radius: 10px solid red;
+}
+
+.cardMain{
+  text-align: center;
+  align-items: center;
+  color: #ffff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 2px;
+}
+
+.creado{
+  background-color: #4E63D7;
+  ;
+}
+
+.asignado {
+  background-color: #FFC350;
+}
+
+.cerrado {
+  background-color: #279E70;
+}
+
+.rechazado {
+  background-color: #D71920;
+}
+
+p{
+  margin: 0;
+}
+
+.fechaCard{
+  font-size: 10px;
+  padding-left: 30px;
+}
+
+
+.cardFooter{
+  height: 50px;
+  padding: 0 20px;
+  font-size:12px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.cardFooterCC {
+  display: flex;
+  gap:0 5px;
+  flex-wrap: wrap;
+}
+
+.cardFooter p {
+  height: 30px;
+}

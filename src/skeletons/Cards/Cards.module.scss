@@ -1,0 +1,46 @@
+.containerCard{
+  width: 270px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--bs-primary);
+}
+
+.cardHeader{
+  width: 100%;
+  height: 25%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.containernumeroPedido{
+  width: 60%;
+  display: flex;
+  gap: 5px;
+  font-size: 15px;
+}
+
+.cardMain{
+  height: 50%;
+  align-items: center;
+  display: flex;
+}
+
+.cardFooter{
+  height: 100%;
+  height: 25%;
+  padding: 0 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.cardFooterCC {
+  width: 60%;
+  display: flex;
+  gap:0 5px;
+  flex-wrap: wrap;
+}
