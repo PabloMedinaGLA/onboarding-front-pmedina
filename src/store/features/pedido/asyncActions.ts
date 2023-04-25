@@ -1,3 +1,5 @@
+import { IPedidoPost } from "domain/Pedido";
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as useCases from "app/pedido";
 import { isAxiosError } from "@architecture-it/core";
@@ -19,6 +21,41 @@ export const getPedidos = createAsyncThunk(
       return pedidos;
     } catch (error: any) {
       let message = "Ocurrió un error al obtener los colaboradores";
+
+      if (isAxiosError(error)) {
+        const errorCode = error.response?.status as number;
+
+        message = MESSAGE_STATUS.get(errorCode) ?? message;
+      }
+
+      displayAlert({
+        type: "error",
+        message,
+      });
+
+      return rejectWithValue(error);
+    }
+  },
+  {
+    //siempre y cuando no esté cargando el estado hace la llamada
+    condition: (_, { getState }) => {
+      const { pedido } = getState() as RootState;
+
+      return !pedido.isLoading;
+    },
+  }
+);
+
+export const postPedido = createAsyncThunk(
+  "pedido/post",
+  async (pedido: IPedidoPost, { rejectWithValue, signal }) => {
+    try {
+      await useCases.post(pedido);
+      const pedidos = await useCases.getAll(signal);
+
+      return pedidos;
+    } catch (error: any) {
+      let message = "Ocurrió un error POST";
 
       if (isAxiosError(error)) {
         const errorCode = error.response?.status as number;

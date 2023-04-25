@@ -32,7 +32,7 @@ export default function Cards({ data }: IPedidoCardsProps) {
         </div>
 
         <div className={styles.containerboxAllCards}>
-          {stateData.length == 0 && <CardSkeleton />}
+          {data.length == 0 && <CardSkeleton />}
           {stateData &&
             stateData.map(({ numeroDePedido, estadoDelPedido, cuentaCorriente, cuando }, i) => {
               return (

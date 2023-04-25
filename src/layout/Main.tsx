@@ -50,7 +50,7 @@ export default function Main({ children }: IMainProps) {
               }
               handleClose();
             },
-            selected: pathname === "/",
+            selected: pathname === "/crear-pedido",
             fontAwesomeProps: {
               icon: faPlus,
             },
@@ -66,7 +66,7 @@ export default function Main({ children }: IMainProps) {
               }
               handleClose();
             },
-            selected: pathname === "/",
+            selected: pathname === "/lista-pedidos",
             fontAwesomeProps: {
               icon: faListUl,
             },

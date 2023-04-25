@@ -8,6 +8,11 @@ export interface IPedido {
   cuando: string;
 }
 
+export interface IPedidoPost {
+  cuentaCorriente: string;
+  codigoDeContratoInterno: string;
+}
+
 export interface IEstadoDelPedido {
   id: number;
   descripcion: string;

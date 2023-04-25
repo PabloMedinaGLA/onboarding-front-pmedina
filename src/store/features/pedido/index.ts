@@ -9,7 +9,7 @@ import {
   rejectCallbackCase,
 } from "@architecture-it/core";
 
-import { getPedidos } from "./asyncActions";
+import { getPedidos, postPedido } from "./asyncActions";
 
 interface IPedidoState extends IState<IPedido[]> {}
 
@@ -34,6 +34,11 @@ export const pedidoSlice = createSlice({
     });
 
     builder.addCase(getPedidos.fulfilled, (state, action) => {
+      fullfiledSimpleCallbackCase(state);
+
+      state.data = action.payload;
+    });
+    builder.addCase(postPedido.fulfilled, (state, action) => {
       fullfiledSimpleCallbackCase(state);
 
       state.data = action.payload;

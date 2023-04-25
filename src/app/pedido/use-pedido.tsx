@@ -1,7 +1,9 @@
+import { IPedido, IPedidoPost } from "domain/Pedido";
+
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { useEffect } from "react";
 import { selectPedido } from "store/features/pedido";
-import { getPedidos } from "store/features/pedido/asyncActions";
+import { getPedidos, postPedido } from "store/features/pedido/asyncActions";
 
 export default function usePedido() {
   const dispatch = useAppDispatch();
@@ -15,5 +17,9 @@ export default function usePedido() {
     };
   }, [dispatch]);
 
-  return data;
+  const uploadPedido = (pedido: IPedidoPost) => {
+    dispatch(postPedido(pedido));
+  };
+
+  return { data, uploadPedido };
 }

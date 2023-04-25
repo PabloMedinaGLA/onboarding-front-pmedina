@@ -1,4 +1,4 @@
-import { IPedido } from "domain/Pedido";
+import { IPedido, IPedidoPost } from "domain/Pedido";
 
 import { ServiceBase, type ICommonOptions } from "@architecture-it/core";
 import env from "@architecture-it/react-env";
@@ -6,7 +6,7 @@ import { msalInstance } from "msalInstance";
 import axios from "axios";
 import { addResponseInterceptorRefreshToken } from "@architecture-it/azure-b2c";
 
-const BASE_URL = env("API") + "v1/Pedido";
+const BASE_URL = env("API") + "v1/pedido";
 
 const data: IPedido[] = [
   {
@@ -45,6 +45,12 @@ class _PedidoService extends ServiceBase {
   // implementar getPersons
   getAll({ signal }: ICommonOptions) {
     return axios.get(BASE_URL);
+  }
+
+  post(pedido: IPedidoPost) {
+    return axios.post(BASE_URL, pedido).then(function (response) {
+      console.log(response);
+    });
   }
 
   // getAll = ({ signal }: ICommonOptions) =>

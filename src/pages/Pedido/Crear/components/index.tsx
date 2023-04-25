@@ -1,68 +1,98 @@
+import { IPedidoPost } from "domain/Pedido";
+
 import { Alert, Button, Input } from "@architecture-it/stylesystem";
 import { Box, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { faCheckCircle } from "@fortawesome/pro-solid-svg-icons";
+import { useState } from "react";
+import usePedido from "app/pedido/use-pedido";
 
 import styles from "../components/index.module.scss";
 
-interface FormData {
-  cuentaCorriente: number;
-  codigoContratoInterno: number;
-}
-
 export default function Form() {
+  const [boolSubmit, setBoolSubmit] = useState("default");
+  const [cerrar, setCerrar] = useState(true);
+  const { uploadPedido } = usePedido();
+
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<IPedidoPost>();
 
-  const onSubmit = handleSubmit((values: any) => {
-    alert("Form submit!" + JSON.stringify(values));
+  const expresion = /^[0-9]*$/;
+
+  const onSubmit = handleSubmit((values: IPedidoPost) => {
+    if (expresion.test(values.cuentaCorriente) && expresion.test(values.codigoDeContratoInterno)) {
+      uploadPedido(values);
+      setBoolSubmit("enviado");
+    } else {
+      setBoolSubmit("rechazado");
+      setCerrar(true);
+    }
   });
 
   return (
     <section className={styles.root}>
+      {boolSubmit == "rechazado" && (
+        <Alert
+          color="error"
+          iconProps={{
+            icon: faCheckCircle,
+          }}
+          open={cerrar}
+          variant="outlined"
+          onCloseProp={() => {
+            setCerrar(false), setBoolSubmit("default");
+          }}
+        >
+          <Typography variant="body2">
+            No puedo ser enviado su <strong>Pedido </strong>
+          </Typography>
+        </Alert>
+      )}
+      {boolSubmit == "enviado" && (
+        <Alert
+          color="success"
+          iconProps={{
+            icon: faCheckCircle,
+          }}
+          open={cerrar}
+          variant="outlined"
+          onCloseProp={() => {
+            setCerrar(false), setBoolSubmit("default");
+          }}
+        >
+          <Typography variant="subtitle2">
+            Nuevo Pedido <strong>fue creado con éxito, </strong>
+          </Typography>
+        </Alert>
+      )}
+
       <form action="" className={styles.container} onSubmit={onSubmit}>
         <h1>Registro Pedido</h1>
-        <Box marginTop="var(--spacing-4)">
+        <Box marginTop="var(--spacing-4)" sx={{ width: "40%" }}>
           <Input
             {...register("cuentaCorriente", {
               required: true,
-              validate: (value) => value === getValues("codigoContratoInterno"),
+              validate: (value) => value === getValues("cuentaCorriente"),
             })}
             label=""
             placeholder="Cuenta Corriente"
-            sx={{ width: 300 }}
+            sx={{ width: 1 }}
             onChange={() => {}}
           />
-          {errors.cuentaCorriente && (
-            <Alert
-              open
-              color="error"
-              iconProps={{
-                icon: faCheckCircle,
-              }}
-              variant="outlined"
-              onCloseProp={() => {}}
-            >
-              <Typography variant="body2">
-                Tu mensaje <strong>no </strong>
-                pudo ser enviado.
-              </Typography>
-            </Alert>
-          )}
         </Box>
-        <Box marginTop="var(--spacing-6)">
+        <Box marginTop="var(--spacing-6)" sx={{ width: "40%" }}>
           <Input
-            {...register("codigoContratoInterno", {
+            {...register("codigoDeContratoInterno", {
               required: true,
-              validate: (value) => value === getValues("codigoContratoInterno"),
+              validate: (value) => value === getValues("codigoDeContratoInterno"),
             })}
             label=""
             placeholder={"Codigo Contrato Interno"}
-            sx={{ width: 300 }}
+            sx={{ width: "100%" }}
             onChange={() => {}}
           />
         </Box>
