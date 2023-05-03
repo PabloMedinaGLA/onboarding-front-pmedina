@@ -6,7 +6,7 @@ import { msalInstance } from "msalInstance";
 import axios from "axios";
 import { addResponseInterceptorRefreshToken } from "@architecture-it/azure-b2c";
 
-const BASE_URL = env("API") + "v1/pedido";
+const BASE_URL = env("API_BACK") + "v1/pedido";
 
 const data: IPedido[] = [
   {
