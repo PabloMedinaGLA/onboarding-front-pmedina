@@ -21,6 +21,10 @@
   }
 }
 
+.container p {
+  text-align: center;
+}
+
 .container > h1 {
   font-family: Ubuntu, Roboto, sans-serif;
     font-size: var(--m-title-2);
